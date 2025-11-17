@@ -2,6 +2,10 @@
 
 A React Native mobile application with Python FastAPI backend for tracking workouts, nutrition, and analyzing exercise form using computer vision.
 
+## 🎥 Demo
+
+Watch the app in action: [YouTube Demo](https://youtu.be/gDu1nD6-Ch4)
+
 ## Features
 
 - **Food Catalog & Nutrition Tracking**: 411+ USDA Foundation Foods with complete nutrient profiles (70+ nutrients per food), Nutrient Density Scoring (NDS) with tier grading system (S, A, B, C, D), smart search with autocomplete and filtering, multiple serving sizes, and meal history tracking.
