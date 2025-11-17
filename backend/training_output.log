@@ -1,0 +1,62 @@
+INFO:__main__:Starting Food Recommender training
+INFO:__main__:Loading food data...
+INFO:data_processing.usda_processor:Starting USDA data processing...
+INFO:data_processing.usda_processor:Loading Foundation Foods from: /Users/matthewkim/Documents/HimAI/backend/../processed_data/categorized_foundation_foods_catalog.json
+INFO:data_processing.usda_processor:Loaded 411 Foundation Foods from processed data
+INFO:__main__:Loaded 411 foods
+INFO:__main__:Generating mock training data...
+INFO:__main__:Generating mock data for 100 users and 411 foods
+INFO:__main__:Generated 100 users and 3407 interactions
+INFO:__main__:Preparing training data...
+INFO:ml_models.food_recommender:Prepared 3407 training samples
+INFO:__main__:Building model...
+WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+INFO:ml_models.food_recommender:Built model with 112,817 parameters
+INFO:__main__:Training model...
+Epoch 1/10
+Traceback (most recent call last):
+  File "/Users/matthewkim/Documents/HimAI/backend/ml_models/train_food_recommender.py", line 224, in <module>
+    asyncio.run(main_async())
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/matthewkim/Documents/HimAI/backend/ml_models/train_food_recommender.py", line 195, in main_async
+    history = recommender.train(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewkim/Documents/HimAI/backend/ml_models/food_recommender.py", line 252, in train
+    history = self.model.fit(
+              ^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/var/folders/zd/26nqfnq51c5gdm3l1j9_356h0000gn/T/__autograph_generated_file5nj6abd0.py", line 15, in tf__train_function
+    retval_ = ag__.converted_call(ag__.ld(step_function), (ag__.ld(self), ag__.ld(iterator)), None, fscope)
+    ^^^^^
+TypeError: in user code:
+
+    File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/engine/training.py", line 1401, in train_function  *
+        return step_function(self, iterator)
+    File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/engine/training.py", line 1384, in step_function  **
+        outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/engine/training.py", line 1373, in run_step  **
+        outputs = model.train_step(data)
+    File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/engine/training.py", line 1155, in train_step
+        return self.compute_metrics(x, y, y_pred, sample_weight)
+    File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/engine/training.py", line 1249, in compute_metrics
+        self.compiled_metrics.update_state(y, y_pred, sample_weight)
+    File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/engine/compile_utils.py", line 620, in update_state
+        metric_obj.update_state(y_t, y_p, sample_weight=mask)
+    File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/utils/metrics_utils.py", line 77, in decorated
+        result = update_state_fn(*args, **kwargs)
+    File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/metrics/base_metric.py", line 140, in update_state_fn
+        return ag_update_state(*args, **kwargs)
+    File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/keras/src/metrics/base_metric.py", line 723, in update_state  **
+        matches = ag_fn(y_true, y_pred, **self._fn_kwargs)
+
+    TypeError: 'str' object is not callable
+
